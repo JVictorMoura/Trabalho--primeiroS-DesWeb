@@ -1,4 +1,4 @@
-// ==================== CLASSE PERSONAGEM ====================
+
 class Personagem {
   constructor(nome, descricao, descricaoLonga, imagem) {
     this.nome = nome;
@@ -17,11 +17,10 @@ class Personagem {
   }
 }
 
-// ==================== CLASSE OPÇÃO ====================
 class Opcao {
   constructor(texto, pontuacoes) {
     this.texto = texto;
-    this.pontuacoes = pontuacoes; // { stark: 3, rogers: 1, thor: 1 }
+    this.pontuacoes = pontuacoes;
   }
 
   obterPontuacao(personagemId) {
@@ -29,11 +28,10 @@ class Opcao {
   }
 }
 
-// ==================== CLASSE PERGUNTA ====================
 class Pergunta {
   constructor(texto, opcoes) {
     this.texto = texto;
-    this.opcoes = opcoes; // Array de objetos Opcao
+    this.opcoes = opcoes;
   }
 
   obterOpcao(index) {
@@ -45,11 +43,10 @@ class Pergunta {
   }
 }
 
-// ==================== CLASSE QUIZ ====================
 class Quiz {
   constructor(personagens, perguntas) {
-    this.personagens = personagens; // { stark: Personagem, rogers: Personagem, ... }
-    this.perguntas = perguntas; // Array de Pergunta
+    this.personagens = personagens; 
+    this.perguntas = perguntas; 
     this.perguntaAtual = 0;
     this.respostaSelecionada = false;
   }
@@ -90,9 +87,9 @@ class Quiz {
     if (this.perguntaAtual < this.perguntas.length - 1) {
       this.perguntaAtual++;
       this.respostaSelecionada = false;
-      return false; // Ainda há perguntas
+      return false;
     }
-    return true; // Quiz finalizado
+    return true;
   }
 
   obterVencedor() {
@@ -111,7 +108,6 @@ class Quiz {
   }
 }
 
-// ==================== CLASSE UI MANAGER ====================
 class UIManager {
   constructor(quiz) {
     this.quiz = quiz;
@@ -165,9 +161,12 @@ class UIManager {
   }
 }
 
-// ==================== INICIALIZAÇÃO ====================
 
-// Criando personagens
+
+
+
+
+
 const personagens = {
   stark: new Personagem(
     "Tony Stark",
@@ -189,7 +188,9 @@ const personagens = {
   )
 };
 
-// Criando perguntas e opções
+
+
+
 const perguntas = [
   new Pergunta("Como você resolve problemas?", [
     new Opcao("Com estratégia", { stark: 3, rogers: 1, thor: 1 }),
@@ -243,13 +244,18 @@ const perguntas = [
   ])
 ];
 
-// Instanciando Quiz e UIManager
+
+
+
 const quiz = new Quiz(personagens, perguntas);
 const ui = new UIManager(quiz);
 
-// ==================== FUNÇÕES GLOBAIS (Para compatibilidade com HTML) ====================
 
-function comcarQuiz() {
+
+
+
+
+function comecarQuiz() {
   quiz.iniciar();
   ui.mostrarTela('quiz');
   ui.mostrarPergunta();
